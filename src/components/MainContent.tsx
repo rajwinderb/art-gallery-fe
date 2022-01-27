@@ -1,18 +1,55 @@
 import "../styles/MainContent.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import SearchedArtworks from "./SearchedArtworks";
+import FeaturedArtworks from "./FeaturedArtworks";
+import { IArtwork, ISearchedArtwork } from "../utils/Interfaces";
+import axios from "axios";
+import { API_BASE } from "../utils/APIFragments";
+import { formatSearchTerm } from "../utils/formatSearchTerm";
+import { trackPromise } from "react-promise-tracker";
+import { LoadingIndicator } from "./LoadingIndicator";
 
 export default function MainContent(): JSX.Element {
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [inSearch, setInSearch] = useState<boolean>(false);
+  const [featuredArt, setFeaturedArt] = useState<IArtwork[]>([]);
+  const [searchResultArt, setSearchResultArt] = useState<ISearchedArtwork[]>(
+    []
+  );
+
+  useEffect(() => {
+    axios
+      .get(`${API_BASE}/artworks/featured`)
+      .then((response) => {
+        setFeaturedArt(response.data.artworks);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   const handleSearch = () => {
     setInSearch(true);
-    console.log(searchTerm);
+    const getSearch = async () => {
+      trackPromise(
+        axios
+          .get(`${API_BASE}/search/${formatSearchTerm(searchTerm)}`)
+          .then((response) => {
+            console.log(response.data.artworks);
+            setSearchResultArt(response.data.artworks);
+          })
+          .catch((error) => {
+            console.log(error);
+          })
+      );
+    };
+    getSearch();
   };
 
   const handleClear = () => {
     setSearchTerm("");
     setInSearch(false);
+    setSearchResultArt([]);
   };
 
   return (
@@ -49,9 +86,17 @@ export default function MainContent(): JSX.Element {
               <i className="fas fa-times"></i>
             </button>
           </div>
-          <p className="ResultsFound">... results found</p>
+          <p className="ResultsFound">{searchResultArt.length} results found</p>
         </div>
       )}
+      <LoadingIndicator />
+      <div className="ArtInMainContent">
+        {inSearch ? (
+          <SearchedArtworks searchResultArt={searchResultArt} />
+        ) : (
+          <FeaturedArtworks featuredArt={featuredArt} />
+        )}
+      </div>
     </div>
   );
 }

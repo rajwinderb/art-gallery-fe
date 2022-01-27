@@ -1,0 +1,13 @@
+.FeaturedArtworks h2 {
+  padding: 15px 10px;
+}
+
+.Artworks {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 40px;
+  grid-row-gap: 120px;
+  margin-top: 40px;
+  margin-left: 40px;
+  max-width: 1500px;
+}
