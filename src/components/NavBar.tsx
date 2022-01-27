@@ -1,7 +1,9 @@
-export default function NavBar(): JSX.Element {
-  // const baseURL = "http://localhost:3000/";
+import "../styles/NavBar.css";
 
-  const baseURL = "https://art-galley.netlify.app/";
+export default function NavBar(): JSX.Element {
+  const baseURL = "http://localhost:3000/";
+
+  // const baseURL = "https://art-galley.netlify.app/";
 
   return (
     <nav>

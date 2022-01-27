@@ -1,3 +1,4 @@
+import "./styles/App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import AppHeader from "./components/AppHeader";
 import MainContent from "./components/MainContent";

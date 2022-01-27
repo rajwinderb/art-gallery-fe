@@ -1,3 +1,4 @@
+import "../styles/AppHeader.css";
 import NavBar from "./NavBar";
 
 export default function AppHeader(): JSX.Element {
