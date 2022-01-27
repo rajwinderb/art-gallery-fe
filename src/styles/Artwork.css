@@ -1,3 +1,16 @@
 .Artwork img {
   max-width: 400px;
 }
+
+.Artwork button {
+  background-color: transparent;
+  margin: 2px 0;
+  border: none;
+  font-family: "IM Fell DW Pica", serif;
+  transition: 0.3s;
+}
+
+.Artwork button:hover {
+  border: 1px solid grey;
+  border-radius: 5px;
+}

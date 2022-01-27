@@ -6,16 +6,22 @@ export interface IUser {
 export interface ITag {
   id: number;
   tag: string;
+  AAT_URL?: string;
+  Wikidata_URL?: string;
+  term?: string;
 }
 
 export interface ISearchTag {
   AAT_URL: string;
   Wikidata_URL: string;
   term: string;
+  id?: number;
+  tag?: string;
 }
 
 export interface IArtwork {
   id: number;
+  objectID?: number;
   artistdisplaybio: string;
   artistdisplayname: string;
   artistgender: string | null;
@@ -49,6 +55,7 @@ export interface IArtwork {
 }
 
 export interface ISearchedArtwork {
+  id?: number;
   objectID: number;
   artistdisplaybio?: string;
   artistdisplayname?: string;
@@ -79,4 +86,32 @@ export interface ISearchedArtwork {
   primaryImageSmall: string;
   tags: ISearchTag[];
   title: string;
+}
+
+export interface IUserArt extends IArtwork {
+  isfavourite: boolean;
+}
+
+export interface IPostArtwork {
+  id: number | undefined;
+  primaryImage: string | undefined;
+  primaryImageSmall: string | undefined;
+  department: string;
+  objectName: string | undefined;
+  title: string | null;
+  culture: string | null;
+  period: string | null;
+  dynasty: string | null;
+  artistPrefix: string | null | undefined;
+  artistDisplayName: string | undefined;
+  artistDisplayBio: string | undefined;
+  artistGender: string | null | undefined;
+  objectDate: string | null | undefined;
+  medium: string | null;
+  country: string | null;
+  classification: string;
+  linkResource: string | null | undefined;
+  featured: boolean;
+  isHighlight: boolean | undefined;
+  tags: (string | undefined)[];
 }

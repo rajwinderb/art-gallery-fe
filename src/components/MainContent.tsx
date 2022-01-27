@@ -2,14 +2,26 @@ import "../styles/MainContent.css";
 import { useEffect, useState } from "react";
 import SearchedArtworks from "./SearchedArtworks";
 import FeaturedArtworks from "./FeaturedArtworks";
-import { IArtwork, ISearchedArtwork } from "../utils/Interfaces";
+import { IArtwork, ISearchedArtwork, IUserArt } from "../utils/Interfaces";
 import axios from "axios";
 import { API_BASE } from "../utils/APIFragments";
 import { formatSearchTerm } from "../utils/formatSearchTerm";
 import { trackPromise } from "react-promise-tracker";
 import { LoadingIndicator } from "./LoadingIndicator";
 
-export default function MainContent(): JSX.Element {
+interface MainContentProps {
+  userId: number | null;
+  userGalleryArt: IUserArt[];
+  triggerGetUserArt: boolean;
+  setTriggerGetUserArt: (input: boolean) => void;
+}
+
+export default function MainContent({
+  userId,
+  userGalleryArt,
+  triggerGetUserArt,
+  setTriggerGetUserArt,
+}: MainContentProps): JSX.Element {
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [inSearch, setInSearch] = useState<boolean>(false);
   const [featuredArt, setFeaturedArt] = useState<IArtwork[]>([]);
@@ -91,9 +103,21 @@ export default function MainContent(): JSX.Element {
       <LoadingIndicator />
       <div className="ArtInMainContent">
         {inSearch ? (
-          <SearchedArtworks searchResultArt={searchResultArt} />
+          <SearchedArtworks
+            searchResultArt={searchResultArt}
+            userId={userId}
+            userGalleryArt={userGalleryArt}
+            triggerGetUserArt={triggerGetUserArt}
+            setTriggerGetUserArt={setTriggerGetUserArt}
+          />
         ) : (
-          <FeaturedArtworks featuredArt={featuredArt} />
+          <FeaturedArtworks
+            featuredArt={featuredArt}
+            userId={userId}
+            userGalleryArt={userGalleryArt}
+            triggerGetUserArt={triggerGetUserArt}
+            setTriggerGetUserArt={setTriggerGetUserArt}
+          />
         )}
       </div>
     </div>
