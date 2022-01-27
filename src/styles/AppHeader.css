@@ -1,0 +1,13 @@
+.AppHeader {
+  background-color: white;
+  margin: 0;
+  padding: 15px 15px 5px 15px;
+  position: sticky;
+  top: 0;
+  border-bottom: 1px solid gray;
+}
+
+.AppHeader h1 {
+  font-weight: 700;
+  font-size: 64px;
+}

@@ -1,3 +1,5 @@
+import "../styles/NavBar.css";
+
 export default function NavBar(): JSX.Element {
   // const baseURL = "http://localhost:3000/";
 
