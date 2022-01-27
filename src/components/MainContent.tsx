@@ -35,7 +35,6 @@ export default function MainContent(): JSX.Element {
         axios
           .get(`${API_BASE}/search/${formatSearchTerm(searchTerm)}`)
           .then((response) => {
-            console.log(response.data.artworks);
             setSearchResultArt(response.data.artworks);
           })
           .catch((error) => {

@@ -1,0 +1,31 @@
+.LogIn {
+  display: flex;
+  font-size: 24px;
+  flex: 30%;
+  justify-content: right;
+}
+.LogIn button {
+  border: 0;
+  outline: 0;
+  background: transparent;
+}
+
+.UsernameInput {
+  font-family: "Noto Serif Display", serif;
+  padding: 2px;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  border-bottom: 2px solid black;
+}
+
+.SignOutButton {
+  margin: 0 6px;
+  padding-bottom: 14px;
+}
+
+.Username {
+  margin: 0;
+  margin-right: 4px;
+  padding-top: 18px;
+}

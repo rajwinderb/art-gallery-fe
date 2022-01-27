@@ -1,3 +1,8 @@
+export interface IUser {
+  id: number;
+  username: string;
+}
+
 export interface ITag {
   id: number;
   tag: string;

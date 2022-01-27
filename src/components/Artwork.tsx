@@ -10,7 +10,6 @@ export default function Artwork({
   artwork,
   search,
 }: ArtworkProps): JSX.Element {
-  console.log(artwork);
   return (
     <div className="Artwork">
       <img
