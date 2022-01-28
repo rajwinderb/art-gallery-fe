@@ -10,4 +10,9 @@
 .AppHeader h1 {
   font-weight: 700;
   font-size: 64px;
+  flex: 70%;
+}
+
+.Header {
+  display: flex;
 }
