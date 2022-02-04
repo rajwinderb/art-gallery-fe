@@ -1,31 +1,29 @@
 import axios from "axios";
-import "../styles/Artwork.css";
-import { addArtToUserGallerySearch } from "../utils/addArtToUserGallerySearch";
-import { API_BASE } from "../utils/APIFragments";
-import { ISearchedArtwork, IUserArt } from "../utils/Interfaces";
-import { inUserGallery } from "../utils/inUserGallery";
-import { reformatToAddArtwork } from "../utils/reformatToAddArtwork";
+import "../../styles/Artwork.css";
+import { addArtToUserGalleryFeatured } from "../../utils/addArtToUserGalleryFeatured";
+import { API_BASE } from "../../utils/APIFragments";
+import { IArtwork, IUserArt } from "../../utils/Interfaces";
+import { inUserGallery } from "../../utils/inUserGallery";
 
-interface ArtworkLoggedInSearchProps {
-  artwork: ISearchedArtwork;
-  search: boolean;
+interface ArtworkLoggedInFeaturedProps {
+  artwork: IArtwork;
   userId: number;
   userGalleryArt: IUserArt[];
   triggerGetUserArt: boolean;
   setTriggerGetUserArt: (input: boolean) => void;
 }
 
-export default function ArtworkLoggedInSearch({
+export default function ArtworkLoggedInFeatured({
   artwork,
   userId,
   userGalleryArt,
   triggerGetUserArt,
   setTriggerGetUserArt,
-}: ArtworkLoggedInSearchProps): JSX.Element {
+}: ArtworkLoggedInFeaturedProps): JSX.Element {
   const handleAdd = () => {
-    addArtToUserGallerySearch(
+    addArtToUserGalleryFeatured(
       userId,
-      reformatToAddArtwork(artwork),
+      artwork.id,
       triggerGetUserArt,
       setTriggerGetUserArt
     );
@@ -35,7 +33,7 @@ export default function ArtworkLoggedInSearch({
     await axios({
       method: "delete",
       url: `${API_BASE}/userart/${userId}`,
-      data: { artid: artwork.objectID },
+      data: { artid: artwork.id },
     })
       .then((response) => {
         setTriggerGetUserArt(!triggerGetUserArt);
@@ -56,28 +54,19 @@ export default function ArtworkLoggedInSearch({
     </button>
   );
 
-  let galleryButton: JSX.Element = <></>;
-
-  if (artwork.objectID) {
-    galleryButton = inUserGallery(artwork.objectID, userGalleryArt)
-      ? removeButton
-      : addButton;
-  }
-  if (artwork.id) {
-    galleryButton = inUserGallery(artwork.id, userGalleryArt)
-      ? removeButton
-      : addButton;
-  }
+  const galleryButton = inUserGallery(artwork.id, userGalleryArt)
+    ? removeButton
+    : addButton;
 
   return (
     <div className="Artwork">
       <img
-        src={artwork.primaryImageSmall}
+        src={artwork.primaryimagesmall}
         alt={artwork.title}
         className="ArtImage"
       />
       <h3 className="ArtTitle">{artwork.title}</h3>
-      <p className="Artist">{artwork.artistDisplayName}</p>
+      <p className="Artist">{artwork.artistdisplayname}</p>
       {galleryButton}
     </div>
   );

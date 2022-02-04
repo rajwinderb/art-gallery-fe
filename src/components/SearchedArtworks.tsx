@@ -1,7 +1,7 @@
 import "../styles/Artworks.css";
 import { ISearchedArtwork, IUserArt } from "../utils/Interfaces";
-import ArtworkLoggedInSearch from "./ArtworkLoggedInSearch";
-import ArtworkSearch from "./ArtworkSearch";
+import ArtworkLoggedInSearch from "./artworkComponents/ArtworkLoggedInSearch";
+import ArtworkSearch from "./artworkComponents/ArtworkSearch";
 
 interface SearchedArtworksProps {
   searchResultArt: ISearchedArtwork[];

@@ -1,7 +1,7 @@
 import "../styles/Artworks.css";
 import { IArtwork, IUserArt } from "../utils/Interfaces";
-import Artwork from "./Artwork";
-import ArtworkLoggedInFeatured from "./ArtworkLoggedInFeatured";
+import Artwork from "./artworkComponents/Artwork";
+import ArtworkLoggedInFeatured from "./artworkComponents/ArtworkLoggedInFeatured";
 
 interface FeaturedArtworksProps {
   featuredArt: IArtwork[];

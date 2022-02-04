@@ -1,5 +1,5 @@
-import "../styles/Artwork.css";
-import { ISearchedArtwork } from "../utils/Interfaces";
+import "../../styles/Artwork.css";
+import { ISearchedArtwork } from "../../utils/Interfaces";
 
 interface ArtworkSearchProps {
   artwork: ISearchedArtwork;

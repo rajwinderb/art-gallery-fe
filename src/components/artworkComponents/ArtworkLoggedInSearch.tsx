@@ -1,29 +1,31 @@
 import axios from "axios";
-import "../styles/Artwork.css";
-import { addArtToUserGalleryFeatured } from "../utils/addArtToUserGalleryFeatured";
-import { API_BASE } from "../utils/APIFragments";
-import { IArtwork, IUserArt } from "../utils/Interfaces";
-import { inUserGallery } from "../utils/inUserGallery";
+import "../../styles/Artwork.css";
+import { addArtToUserGallerySearch } from "../../utils/addArtToUserGallerySearch";
+import { API_BASE } from "../../utils/APIFragments";
+import { ISearchedArtwork, IUserArt } from "../../utils/Interfaces";
+import { inUserGallery } from "../../utils/inUserGallery";
+import { reformatToAddArtwork } from "../../utils/reformatToAddArtwork";
 
-interface ArtworkLoggedInFeaturedProps {
-  artwork: IArtwork;
+interface ArtworkLoggedInSearchProps {
+  artwork: ISearchedArtwork;
+  search: boolean;
   userId: number;
   userGalleryArt: IUserArt[];
   triggerGetUserArt: boolean;
   setTriggerGetUserArt: (input: boolean) => void;
 }
 
-export default function ArtworkLoggedInFeatured({
+export default function ArtworkLoggedInSearch({
   artwork,
   userId,
   userGalleryArt,
   triggerGetUserArt,
   setTriggerGetUserArt,
-}: ArtworkLoggedInFeaturedProps): JSX.Element {
+}: ArtworkLoggedInSearchProps): JSX.Element {
   const handleAdd = () => {
-    addArtToUserGalleryFeatured(
+    addArtToUserGallerySearch(
       userId,
-      artwork.id,
+      reformatToAddArtwork(artwork),
       triggerGetUserArt,
       setTriggerGetUserArt
     );
@@ -33,7 +35,7 @@ export default function ArtworkLoggedInFeatured({
     await axios({
       method: "delete",
       url: `${API_BASE}/userart/${userId}`,
-      data: { artid: artwork.id },
+      data: { artid: artwork.objectID },
     })
       .then((response) => {
         setTriggerGetUserArt(!triggerGetUserArt);
@@ -54,19 +56,28 @@ export default function ArtworkLoggedInFeatured({
     </button>
   );
 
-  const galleryButton = inUserGallery(artwork.id, userGalleryArt)
-    ? removeButton
-    : addButton;
+  let galleryButton: JSX.Element = <></>;
+
+  if (artwork.objectID) {
+    galleryButton = inUserGallery(artwork.objectID, userGalleryArt)
+      ? removeButton
+      : addButton;
+  }
+  if (artwork.id) {
+    galleryButton = inUserGallery(artwork.id, userGalleryArt)
+      ? removeButton
+      : addButton;
+  }
 
   return (
     <div className="Artwork">
       <img
-        src={artwork.primaryimagesmall}
+        src={artwork.primaryImageSmall}
         alt={artwork.title}
         className="ArtImage"
       />
       <h3 className="ArtTitle">{artwork.title}</h3>
-      <p className="Artist">{artwork.artistdisplayname}</p>
+      <p className="Artist">{artwork.artistDisplayName}</p>
       {galleryButton}
     </div>
   );

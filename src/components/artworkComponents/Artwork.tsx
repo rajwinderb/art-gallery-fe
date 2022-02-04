@@ -1,5 +1,5 @@
-import "../styles/Artwork.css";
-import { IArtwork } from "../utils/Interfaces";
+import "../../styles/Artwork.css";
+import { IArtwork } from "../../utils/Interfaces";
 
 interface ArtworkProps {
   artwork: IArtwork;

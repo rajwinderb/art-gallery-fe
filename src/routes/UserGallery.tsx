@@ -1,7 +1,7 @@
 import "../styles/Artworks.css";
 import { useNavigate } from "react-router-dom";
 import { IUserArt } from "../utils/Interfaces";
-import ArtworkLoggedInFeatured from "../components/ArtworkLoggedInFeatured";
+import ArtworkLoggedInFeatured from "../components/artworkComponents/ArtworkLoggedInFeatured";
 
 interface UserGalleryProps {
   userId: number | null;
