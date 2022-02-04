@@ -1,35 +1,31 @@
 import axios from "axios";
 import "../styles/Artwork.css";
-import { addArtToUserGallery } from "../utils/addArtToUserGallery";
+import { addArtToUserGalleryFeatured } from "../utils/addArtToUserGalleryFeatured";
 import { API_BASE } from "../utils/APIFragments";
-import { IArtwork, ISearchedArtwork, IUserArt } from "../utils/Interfaces";
+import { IArtwork, IUserArt } from "../utils/Interfaces";
 import { inUserGallery } from "../utils/inUserGallery";
-import { reformatToAddArtwork } from "../utils/reformatToAddArtwork";
 
-interface ArtworkLoggedInProps {
-  artwork: IArtwork | ISearchedArtwork;
-  search: boolean;
+interface ArtworkLoggedInFeaturedProps {
+  artwork: IArtwork;
   userId: number;
   userGalleryArt: IUserArt[];
   triggerGetUserArt: boolean;
   setTriggerGetUserArt: (input: boolean) => void;
 }
 
-export default function ArtworkLoggedIn({
+export default function ArtworkLoggedInFeatured({
   artwork,
-  search,
   userId,
   userGalleryArt,
   triggerGetUserArt,
   setTriggerGetUserArt,
-}: ArtworkLoggedInProps): JSX.Element {
+}: ArtworkLoggedInFeaturedProps): JSX.Element {
   const handleAdd = () => {
-    addArtToUserGallery(
+    addArtToUserGalleryFeatured(
       userId,
-      reformatToAddArtwork(artwork),
+      artwork.id,
       triggerGetUserArt,
-      setTriggerGetUserArt,
-      search
+      setTriggerGetUserArt
     );
   };
 
@@ -58,30 +54,19 @@ export default function ArtworkLoggedIn({
     </button>
   );
 
-  let galleryButton: JSX.Element = <></>;
-
-  if (artwork.objectID) {
-    galleryButton = inUserGallery(artwork.objectID, userGalleryArt)
-      ? removeButton
-      : addButton;
-  }
-  if (artwork.id) {
-    galleryButton = inUserGallery(artwork.id, userGalleryArt)
-      ? removeButton
-      : addButton;
-  }
+  const galleryButton = inUserGallery(artwork.id, userGalleryArt)
+    ? removeButton
+    : addButton;
 
   return (
     <div className="Artwork">
       <img
-        src={search ? artwork.primaryImageSmall : artwork.primaryimagesmall}
+        src={artwork.primaryimagesmall}
         alt={artwork.title}
         className="ArtImage"
       />
       <h3 className="ArtTitle">{artwork.title}</h3>
-      <p className="Artist">
-        {search ? artwork.artistDisplayName : artwork.artistdisplayname}
-      </p>
+      <p className="Artist">{artwork.artistdisplayname}</p>
       {galleryButton}
     </div>
   );

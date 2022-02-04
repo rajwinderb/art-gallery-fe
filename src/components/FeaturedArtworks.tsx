@@ -1,7 +1,7 @@
 import "../styles/Artworks.css";
 import { IArtwork, IUserArt } from "../utils/Interfaces";
 import Artwork from "./Artwork";
-import ArtworkLoggedIn from "./ArtworkLoggedIn";
+import ArtworkLoggedInFeatured from "./ArtworkLoggedInFeatured";
 
 interface FeaturedArtworksProps {
   featuredArt: IArtwork[];
@@ -21,13 +21,12 @@ export default function FeaturedArtworks({
   const featuredArtElements =
     userId === null
       ? featuredArt.map((artwork) => (
-          <Artwork key={artwork.id} artwork={artwork} search={false} />
+          <Artwork key={artwork.id} artwork={artwork} />
         ))
       : featuredArt.map((artwork) => (
-          <ArtworkLoggedIn
+          <ArtworkLoggedInFeatured
             key={artwork.id}
             artwork={artwork}
-            search={false}
             userId={userId}
             userGalleryArt={userGalleryArt}
             triggerGetUserArt={triggerGetUserArt}

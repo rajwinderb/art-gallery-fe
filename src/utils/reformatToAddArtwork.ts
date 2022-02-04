@@ -1,43 +1,29 @@
-import { IArtwork, IPostArtwork, ISearchedArtwork } from "./Interfaces";
+import { IPostArtwork, ISearchedArtwork } from "./Interfaces";
 
-export function reformatToAddArtwork(
-  artwork: IArtwork | ISearchedArtwork
-): IPostArtwork {
+export function reformatToAddArtwork(artwork: ISearchedArtwork): IPostArtwork {
   const postArtwork = {
-    id: artwork.objectID ? artwork.objectID : artwork.id,
-    primaryImage: artwork.primaryImage
-      ? artwork.primaryImage
-      : artwork.primaryimage,
-    primaryImageSmall: artwork.primaryImageSmall
-      ? artwork.primaryImageSmall
-      : artwork.primaryimagesmall,
+    id: artwork.objectID,
+    primaryImage: artwork.primaryImage,
+    primaryImageSmall: artwork.primaryImageSmall,
     department: artwork.department,
-    objectName: artwork.objectName ? artwork.objectName : artwork.objectname,
+    objectName: artwork.objectName,
     title: artwork.title,
     culture: artwork.culture,
     period: artwork.period,
     dynasty: artwork.dynasty,
-    artistPrefix: "",
-    artistDisplayName: artwork.artistDisplayName
-      ? artwork.artistDisplayName
-      : artwork.artistdisplayname,
-    artistDisplayBio: artwork.artistDisplayBio
-      ? artwork.artistDisplayBio
-      : artwork.artistdisplaybio,
-    artistGender: "",
-    objectDate: artwork.objectDate ? artwork.objectDate : artwork.objectdate,
+    artistPrefix: artwork.artistPrefix,
+    artistDisplayName: artwork.artistDisplayName,
+    artistDisplayBio: artwork.artistDisplayBio,
+    artistGender: artwork.artistGender,
+    objectDate: artwork.objectDate,
     medium: artwork.medium,
     country: artwork.country,
     classification: artwork.classification,
-    linkResource: "",
+    linkResource: artwork.linkResource,
     featured: false,
-    isHighlight: false,
+    isHighlight: artwork.isHighlight,
     tags: artwork.tags.map((tag) => {
-      if (tag.id === undefined) {
-        return tag.term;
-      } else {
-        return tag.tag;
-      }
+      return tag.term;
     }),
   };
   return postArtwork;

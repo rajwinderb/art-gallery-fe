@@ -1,7 +1,7 @@
 import "../styles/Artworks.css";
 import { useNavigate } from "react-router-dom";
-import ArtworkLoggedIn from "../components/ArtworkLoggedIn";
 import { IUserArt } from "../utils/Interfaces";
+import ArtworkLoggedInFeatured from "../components/ArtworkLoggedInFeatured";
 
 interface UserGalleryProps {
   userId: number | null;
@@ -21,10 +21,9 @@ export default function UserGallery({
   const userGalleryArtElements =
     userId != null &&
     userGalleryArt.map((artwork) => (
-      <ArtworkLoggedIn
+      <ArtworkLoggedInFeatured
         key={artwork.id}
         artwork={artwork}
-        search={false}
         userId={userId}
         userGalleryArt={userGalleryArt}
         triggerGetUserArt={triggerGetUserArt}

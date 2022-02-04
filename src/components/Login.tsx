@@ -16,6 +16,7 @@ export default function Login({ userId, setUserId }: LoginProps): JSX.Element {
   const navigate = useNavigate();
   const [userList, setUserList] = useState<IUser[]>([]);
   const [username, setUsername] = useState<string>("");
+  const [triggerGetUserList, setTriggerGetUserList] = useState<boolean>(false);
 
   useEffect(() => {
     axios
@@ -38,6 +39,7 @@ export default function Login({ userId, setUserId }: LoginProps): JSX.Element {
         .then((response) => {
           localStorage.setItem("savedUserId", `${response.data.new_user.id}`);
           setUserId(response.data.new_user.id);
+          setTriggerGetUserList(!triggerGetUserList);
         })
         .catch((error) => {
           console.log(error);
