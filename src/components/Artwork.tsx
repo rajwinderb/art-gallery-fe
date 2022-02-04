@@ -1,26 +1,20 @@
 import "../styles/Artwork.css";
-import { IArtwork, ISearchedArtwork } from "../utils/Interfaces";
+import { IArtwork } from "../utils/Interfaces";
 
 interface ArtworkProps {
-  artwork: IArtwork | ISearchedArtwork;
-  search: boolean;
+  artwork: IArtwork;
 }
 
-export default function Artwork({
-  artwork,
-  search,
-}: ArtworkProps): JSX.Element {
+export default function Artwork({ artwork }: ArtworkProps): JSX.Element {
   return (
     <div className="Artwork">
       <img
-        src={search ? artwork.primaryImageSmall : artwork.primaryimagesmall}
+        src={artwork.primaryimagesmall}
         alt={artwork.title}
         className="ArtImage"
       />
       <h3 className="ArtTitle">{artwork.title}</h3>
-      <p className="Artist">
-        {search ? artwork.artistDisplayName : artwork.artistdisplayname}
-      </p>
+      <p className="Artist">{artwork.artistdisplayname}</p>
     </div>
   );
 }

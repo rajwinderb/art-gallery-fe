@@ -1,7 +1,7 @@
 import "../styles/Artworks.css";
 import { ISearchedArtwork, IUserArt } from "../utils/Interfaces";
-import Artwork from "./Artwork";
-import ArtworkLoggedIn from "./ArtworkLoggedIn";
+import ArtworkLoggedInSearch from "./ArtworkLoggedInSearch";
+import ArtworkSearch from "./ArtworkSearch";
 
 interface SearchedArtworksProps {
   searchResultArt: ISearchedArtwork[];
@@ -21,10 +21,10 @@ export default function SearchedArtworks({
   const searchResultArtElements =
     userId == null
       ? searchResultArt.map((artwork) => (
-          <Artwork key={artwork.objectID} artwork={artwork} search={true} />
+          <ArtworkSearch key={artwork.objectID} artwork={artwork} />
         ))
       : searchResultArt.map((artwork) => (
-          <ArtworkLoggedIn
+          <ArtworkLoggedInSearch
             key={artwork.objectID}
             artwork={artwork}
             search={true}
