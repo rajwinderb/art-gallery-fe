@@ -2,16 +2,16 @@ import axios from "axios";
 import "../../styles/Artwork.css";
 import { addArtToUserGalleryFeatured } from "../../utils/addArtToUserGalleryFeatured";
 import { API_BASE } from "../../utils/APIFragments";
-import { IArtwork, IUserArt } from "../../utils/Interfaces";
+import { IUserArt } from "../../utils/Interfaces";
 import { inUserGallery } from "../../utils/inUserGallery";
 
 interface ArtworkLoggedInFeaturedProps {
-  artwork: IArtwork;
+  artwork: IUserArt;
   userId: number;
   userGalleryArt: IUserArt[];
   triggerGetUserArt: boolean;
   setTriggerGetUserArt: (input: boolean) => void;
-  pickFeaturedArtwork: (artwork: IArtwork) => void;
+  pickUserGalleryArtwork: (artwork: IUserArt) => void;
 }
 
 export default function ArtworkLoggedInFeatured({
@@ -20,7 +20,7 @@ export default function ArtworkLoggedInFeatured({
   userGalleryArt,
   triggerGetUserArt,
   setTriggerGetUserArt,
-  pickFeaturedArtwork,
+  pickUserGalleryArtwork,
 }: ArtworkLoggedInFeaturedProps): JSX.Element {
   const handleAdd = () => {
     addArtToUserGalleryFeatured(
@@ -66,7 +66,7 @@ export default function ArtworkLoggedInFeatured({
         src={artwork.primaryimagesmall}
         alt={artwork.title}
         className="ArtImage"
-        onClick={() => pickFeaturedArtwork(artwork)}
+        onClick={() => pickUserGalleryArtwork(artwork)}
       />
       <h3 className="ArtTitle">{artwork.title}</h3>
       <p className="Artist">{artwork.artistdisplayname}</p>
