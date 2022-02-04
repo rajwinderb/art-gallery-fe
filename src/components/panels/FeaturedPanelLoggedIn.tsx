@@ -1,15 +1,15 @@
 import "../../styles/Panel.css";
 import { IArtwork } from "../../utils/Interfaces";
 
-interface FeaturedPanelProps {
+interface FeaturedPanelLoggedInProps {
   artwork: IArtwork;
   closeFeaturedPanel: () => void;
 }
 
-export default function FeaturedPanel({
+export default function FeaturedPanelLoggedIn({
   artwork,
   closeFeaturedPanel,
-}: FeaturedPanelProps): JSX.Element {
+}: FeaturedPanelLoggedInProps): JSX.Element {
   return (
     <div className="PanelBackgroundLoggedIn">
       <div className="PanelContainerLoggedIn">

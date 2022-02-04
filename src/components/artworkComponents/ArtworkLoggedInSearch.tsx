@@ -13,6 +13,7 @@ interface ArtworkLoggedInSearchProps {
   userGalleryArt: IUserArt[];
   triggerGetUserArt: boolean;
   setTriggerGetUserArt: (input: boolean) => void;
+  pickSearchArtwork: (artwork: ISearchedArtwork) => void;
 }
 
 export default function ArtworkLoggedInSearch({
@@ -21,6 +22,7 @@ export default function ArtworkLoggedInSearch({
   userGalleryArt,
   triggerGetUserArt,
   setTriggerGetUserArt,
+  pickSearchArtwork,
 }: ArtworkLoggedInSearchProps): JSX.Element {
   const handleAdd = () => {
     addArtToUserGallerySearch(
@@ -75,6 +77,7 @@ export default function ArtworkLoggedInSearch({
         src={artwork.primaryImageSmall}
         alt={artwork.title}
         className="ArtImage"
+        onClick={() => pickSearchArtwork(artwork)}
       />
       <h3 className="ArtTitle">{artwork.title}</h3>
       <p className="Artist">{artwork.artistDisplayName}</p>

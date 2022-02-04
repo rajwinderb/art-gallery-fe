@@ -1,19 +1,19 @@
 import "../../styles/Panel.css";
 import { IUserArt } from "../../utils/Interfaces";
 
-interface FeaturedPanelProps {
+interface UserGalleyPanelProps {
   artwork: IUserArt;
-  closeFeaturedPanel: () => void;
+  closeUserGalleyPanel: () => void;
 }
 
 export default function UserGalleryPanel({
   artwork,
-  closeFeaturedPanel,
-}: FeaturedPanelProps): JSX.Element {
+  closeUserGalleyPanel,
+}: UserGalleyPanelProps): JSX.Element {
   return (
     <div className="PanelBackgroundLoggedIn">
       <div className="PanelContainerLoggedIn">
-        <button onClick={() => closeFeaturedPanel()}>close</button>
+        <button onClick={() => closeUserGalleyPanel()}>close</button>
         <img src={artwork.primaryimagesmall} alt={artwork.title} />
         <h3>{artwork.title}</h3>
         <p className="Artist">{artwork.artistdisplayname}</p>

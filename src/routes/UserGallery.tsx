@@ -61,7 +61,7 @@ export default function UserGallery({
           {(state) => (
             <UserGalleryPanel
               artwork={selectedArtworkUserGallery}
-              closeFeaturedPanel={closeUserGalleryPanel}
+              closeUserGalleyPanel={closeUserGalleryPanel}
             />
           )}
         </Transition>
