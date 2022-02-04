@@ -1,0 +1,51 @@
+.PanelBackground {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: calc(100vh - 105px);
+  background: rgba(0, 0, 0, 0.85);
+  z-index: 1;
+}
+
+.PanelBackgroundLoggedIn {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: calc(100vh - 155px);
+  background: rgba(0, 0, 0, 0.85);
+  z-index: 1;
+}
+
+.PanelContainer {
+  background-color: #fff;
+  border-top: 1px solid #000;
+  border-left: 2px solid #000;
+  height: calc(100vh - 105px);
+  width: 660px;
+  position: fixed;
+  right: 0;
+  z-index: 2;
+  bottom: 0;
+  box-sizing: border-box;
+  padding: 40px 120px 60px 40px;
+  overflow: scroll;
+  transition: 300ms;
+}
+
+.PanelContainerLoggedIn {
+  background-color: #fff;
+  border-top: 1px solid #000;
+  border-left: 2px solid #000;
+  height: calc(100vh - 155px);
+  width: 660px;
+  position: fixed;
+  right: 0;
+  z-index: 2;
+  bottom: 0;
+  box-sizing: border-box;
+  padding: 40px 120px 60px 40px;
+  overflow: scroll;
+  transition: 300ms;
+}
