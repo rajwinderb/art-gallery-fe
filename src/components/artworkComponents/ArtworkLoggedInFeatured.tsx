@@ -1,9 +1,9 @@
 import axios from "axios";
-import "../styles/Artwork.css";
-import { addArtToUserGalleryFeatured } from "../utils/addArtToUserGalleryFeatured";
-import { API_BASE } from "../utils/APIFragments";
-import { IArtwork, IUserArt } from "../utils/Interfaces";
-import { inUserGallery } from "../utils/inUserGallery";
+import "../../styles/Artwork.css";
+import { addArtToUserGalleryFeatured } from "../../utils/addArtToUserGalleryFeatured";
+import { API_BASE } from "../../utils/APIFragments";
+import { IArtwork, IUserArt } from "../../utils/Interfaces";
+import { inUserGallery } from "../../utils/inUserGallery";
 
 interface ArtworkLoggedInFeaturedProps {
   artwork: IArtwork;
@@ -11,6 +11,7 @@ interface ArtworkLoggedInFeaturedProps {
   userGalleryArt: IUserArt[];
   triggerGetUserArt: boolean;
   setTriggerGetUserArt: (input: boolean) => void;
+  pickFeaturedArtwork: (artwork: IArtwork) => void;
 }
 
 export default function ArtworkLoggedInFeatured({
@@ -19,6 +20,7 @@ export default function ArtworkLoggedInFeatured({
   userGalleryArt,
   triggerGetUserArt,
   setTriggerGetUserArt,
+  pickFeaturedArtwork,
 }: ArtworkLoggedInFeaturedProps): JSX.Element {
   const handleAdd = () => {
     addArtToUserGalleryFeatured(
@@ -64,6 +66,7 @@ export default function ArtworkLoggedInFeatured({
         src={artwork.primaryimagesmall}
         alt={artwork.title}
         className="ArtImage"
+        onClick={() => pickFeaturedArtwork(artwork)}
       />
       <h3 className="ArtTitle">{artwork.title}</h3>
       <p className="Artist">{artwork.artistdisplayname}</p>
