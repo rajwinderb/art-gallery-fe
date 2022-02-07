@@ -13,10 +13,21 @@ export default function FeaturedPanelLoggedIn({
   return (
     <div className="PanelBackgroundLoggedIn">
       <div className="PanelContainerLoggedIn">
-        <button onClick={() => closeFeaturedPanel()}>close</button>
+        <div className="ButtonContainer">
+          <button onClick={() => closeFeaturedPanel()} className="CloseButton">
+            <i className="fas fa-times"></i>
+          </button>
+        </div>
         <img src={artwork.primaryimagesmall} alt={artwork.title} />
         <h3>{artwork.title}</h3>
+        <p className="ObjectDate">{artwork.objectdate}</p>
         <p className="Artist">{artwork.artistdisplayname}</p>
+        <p className="AboutArtist">
+          About {artwork.artistdisplayname}: {artwork.artistdisplaybio}
+        </p>
+        <p className="ClassificationDepartmentMedium">
+          {`${artwork.classification} | ${artwork.department} | ${artwork.medium}`}
+        </p>
       </div>
     </div>
   );

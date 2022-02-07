@@ -49,3 +49,36 @@
   overflow: scroll;
   transition: 300ms;
 }
+
+.PanelContainer img {
+  max-height: 400px;
+  margin: 10px auto;
+}
+
+.PanelContainerLoggedIn img {
+  max-height: 400px;
+  margin: 10px auto;
+}
+
+.ObjectDate {
+  font-style: italic;
+}
+
+.Artist {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.AboutArtist {
+  font-size: 14px;
+}
+
+.ButtonContainer {
+  width: 100%;
+}
+
+.CloseButton {
+  background-color: transparent;
+  border: none;
+  font-size: 24px;
+}
