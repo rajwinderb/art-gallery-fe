@@ -61,7 +61,11 @@ export default function UserGallery({
           {(state) => (
             <UserGalleryPanel
               artwork={selectedArtworkUserGallery}
-              closeUserGalleyPanel={closeUserGalleryPanel}
+              closeUserGalleryPanel={closeUserGalleryPanel}
+              userId={userId}
+              userGalleryArt={userGalleryArt}
+              triggerGetUserArt={triggerGetUserArt}
+              setTriggerGetUserArt={setTriggerGetUserArt}
             />
           )}
         </Transition>

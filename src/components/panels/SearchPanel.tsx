@@ -13,10 +13,22 @@ export default function SearchPanel({
   return (
     <div className="PanelBackground">
       <div className="PanelContainer">
-        <button onClick={() => closeSearchPanel()}>close</button>
+        <div className="ButtonContainer">
+          <button onClick={() => closeSearchPanel()} className="CloseButton">
+            <i className="fas fa-times"></i>
+          </button>
+        </div>
         <img src={artwork.primaryImageSmall} alt={artwork.title} />
         <h3>{artwork.title}</h3>
+        <p className="ObjectDate">{artwork.objectDate}</p>
         <p className="Artist">{artwork.artistDisplayName}</p>
+        <p className="AboutArtist">
+          About {artwork.artistDisplayName}: {artwork.artistDisplayBio}
+        </p>
+        <p className="ClassificationDepartment">
+          {`${artwork.classification} | ${artwork.department}`}
+        </p>
+        <p className="Medium">{artwork.medium}</p>
       </div>
     </div>
   );

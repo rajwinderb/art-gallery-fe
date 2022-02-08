@@ -49,3 +49,51 @@
   overflow: scroll;
   transition: 300ms;
 }
+
+.PanelContainer img {
+  max-height: 400px;
+  margin: 10px auto;
+}
+
+.PanelContainerLoggedIn img {
+  max-height: 400px;
+  margin: 10px auto;
+}
+
+.ObjectDate {
+  font-style: italic;
+}
+
+.Artist {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.AboutArtist {
+  font-size: 14px;
+}
+
+.ButtonContainer {
+  width: 550px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.CloseButton {
+  background-color: transparent;
+  border: none;
+  font-size: 24px;
+  text-align: left;
+}
+
+.PanelArtGalleryButton {
+  background-color: transparent;
+  border: none;
+  font-family: "IM Fell DW Pica", serif;
+  transition: 0.3s;
+}
+
+.PanelArtGalleryButton:hover {
+  border: 1px solid grey;
+  border-radius: 5px;
+}
