@@ -2,43 +2,43 @@ import { getUsername } from "./getUsername";
 
 const userList = [
   {
-    id: 1,
-    username: "Bob",
-  },
-  {
-    id: 2,
-    username: "Amy",
-  },
-  {
-    id: 4,
-    username: "John",
-  },
-  {
     id: 7,
     username: "martha",
-  },
-  {
-    id: 8,
-    username: "Toye",
-  },
-  {
-    id: 9,
-    username: "Emma",
   },
   {
     id: 10,
     username: "neill",
   },
   {
+    id: 1,
+    username: "bob",
+  },
+  {
+    id: 2,
+    username: "amy",
+  },
+  {
+    id: 4,
+    username: "john",
+  },
+  {
+    id: 8,
+    username: "toye",
+  },
+  {
+    id: 9,
+    username: "emma",
+  },
+  {
     id: 11,
-    username: "faithh",
+    username: "faith",
   },
 ];
 
 test("correct username recieved", () => {
-  expect(getUsername(1, userList)).toBe("Bob");
-  expect(getUsername(2, userList)).toBe("Amy");
-  expect(getUsername(4, userList)).toBe("John");
+  expect(getUsername(1, userList)).toBe("bob");
+  expect(getUsername(2, userList)).toBe("amy");
+  expect(getUsername(4, userList)).toBe("john");
   expect(getUsername(7, userList)).toBe("martha");
 });
 
