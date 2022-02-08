@@ -25,9 +25,10 @@ export default function FeaturedPanel({
         <p className="AboutArtist">
           About {artwork.artistdisplayname}: {artwork.artistdisplaybio}
         </p>
-        <p className="ClassificationDepartmentMedium">
-          {`${artwork.classification} | ${artwork.department} | ${artwork.medium}`}
+        <p className="ClassificationDepartment">
+          {`${artwork.classification} | ${artwork.department}`}
         </p>
+        <p className="Medium">{artwork.medium}</p>
       </div>
     </div>
   );

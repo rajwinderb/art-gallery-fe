@@ -8,7 +8,6 @@ import { reformatToAddArtwork } from "../../utils/reformatToAddArtwork";
 
 interface ArtworkLoggedInSearchProps {
   artwork: ISearchedArtwork;
-  search: boolean;
   userId: number;
   userGalleryArt: IUserArt[];
   triggerGetUserArt: boolean;
@@ -60,16 +59,9 @@ export default function ArtworkLoggedInSearch({
 
   let galleryButton: JSX.Element = <></>;
 
-  if (artwork.objectID) {
-    galleryButton = inUserGallery(artwork.objectID, userGalleryArt)
-      ? removeButton
-      : addButton;
-  }
-  if (artwork.id) {
-    galleryButton = inUserGallery(artwork.id, userGalleryArt)
-      ? removeButton
-      : addButton;
-  }
+  galleryButton = inUserGallery(artwork.objectID, userGalleryArt)
+    ? removeButton
+    : addButton;
 
   return (
     <div className="Artwork">

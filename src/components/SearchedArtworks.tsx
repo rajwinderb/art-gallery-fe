@@ -49,7 +49,6 @@ export default function SearchedArtworks({
           <ArtworkLoggedInSearch
             key={artwork.objectID}
             artwork={artwork}
-            search={true}
             userId={userId}
             userGalleryArt={userGalleryArt}
             triggerGetUserArt={triggerGetUserArt}
@@ -77,6 +76,10 @@ export default function SearchedArtworks({
             <SearchPanelLoggedIn
               artwork={selectedArtworkSearch}
               closeSearchPanel={closeSearchPanel}
+              userId={userId}
+              userGalleryArt={userGalleryArt}
+              triggerGetUserArt={triggerGetUserArt}
+              setTriggerGetUserArt={setTriggerGetUserArt}
             />
           )}
         </Transition>

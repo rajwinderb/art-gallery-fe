@@ -74,11 +74,26 @@
 }
 
 .ButtonContainer {
-  width: 100%;
+  width: 550px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .CloseButton {
   background-color: transparent;
   border: none;
   font-size: 24px;
+  text-align: left;
+}
+
+.PanelArtGalleryButton {
+  background-color: transparent;
+  border: none;
+  font-family: "IM Fell DW Pica", serif;
+  transition: 0.3s;
+}
+
+.PanelArtGalleryButton:hover {
+  border: 1px solid grey;
+  border-radius: 5px;
 }

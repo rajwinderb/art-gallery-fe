@@ -1,15 +1,69 @@
+import axios from "axios";
 import "../../styles/Panel.css";
-import { IArtwork } from "../../utils/Interfaces";
+import { addArtToUserGalleryFeatured } from "../../utils/addArtToUserGalleryFeatured";
+import { API_BASE } from "../../utils/APIFragments";
+import { IArtwork, IUserArt } from "../../utils/Interfaces";
+import { inUserGallery } from "../../utils/inUserGallery";
 
 interface FeaturedPanelLoggedInProps {
   artwork: IArtwork;
   closeFeaturedPanel: () => void;
+  userId: number;
+  userGalleryArt: IUserArt[];
+  triggerGetUserArt: boolean;
+  setTriggerGetUserArt: (input: boolean) => void;
 }
 
 export default function FeaturedPanelLoggedIn({
   artwork,
   closeFeaturedPanel,
+  userId,
+  userGalleryArt,
+  triggerGetUserArt,
+  setTriggerGetUserArt,
 }: FeaturedPanelLoggedInProps): JSX.Element {
+  const handleAdd = () => {
+    addArtToUserGalleryFeatured(
+      userId,
+      artwork.id,
+      triggerGetUserArt,
+      setTriggerGetUserArt
+    );
+  };
+
+  const handleRemove = async () => {
+    await axios({
+      method: "delete",
+      url: `${API_BASE}/userart/${userId}`,
+      data: { artid: artwork.id },
+    })
+      .then((response) => {
+        setTriggerGetUserArt(!triggerGetUserArt);
+      })
+      .catch((error) => console.log(error));
+  };
+
+  const addButton = (
+    <button type="button" onClick={handleAdd} className="PanelArtGalleryButton">
+      {" "}
+      + Add to Art Gallery{" "}
+    </button>
+  );
+  const removeButton = (
+    <button
+      type="button"
+      onClick={handleRemove}
+      className="PanelArtGalleryButton"
+    >
+      {" "}
+      - Remove from Art Gallery{" "}
+    </button>
+  );
+
+  const galleryButton = inUserGallery(artwork.id, userGalleryArt)
+    ? removeButton
+    : addButton;
+
   return (
     <div className="PanelBackgroundLoggedIn">
       <div className="PanelContainerLoggedIn">
@@ -17,6 +71,7 @@ export default function FeaturedPanelLoggedIn({
           <button onClick={() => closeFeaturedPanel()} className="CloseButton">
             <i className="fas fa-times"></i>
           </button>
+          {galleryButton}
         </div>
         <img src={artwork.primaryimagesmall} alt={artwork.title} />
         <h3>{artwork.title}</h3>
@@ -25,9 +80,10 @@ export default function FeaturedPanelLoggedIn({
         <p className="AboutArtist">
           About {artwork.artistdisplayname}: {artwork.artistdisplaybio}
         </p>
-        <p className="ClassificationDepartmentMedium">
-          {`${artwork.classification} | ${artwork.department} | ${artwork.medium}`}
+        <p className="ClassificationDepartment">
+          {`${artwork.classification} | ${artwork.department}`}
         </p>
+        <p className="Medium">{artwork.medium}</p>
       </div>
     </div>
   );

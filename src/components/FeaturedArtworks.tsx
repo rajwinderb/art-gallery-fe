@@ -77,6 +77,10 @@ export default function FeaturedArtworks({
             <FeaturedPanelLoggedIn
               artwork={selectedArtworkFeatured}
               closeFeaturedPanel={closeFeaturedPanel}
+              userId={userId}
+              userGalleryArt={userGalleryArt}
+              triggerGetUserArt={triggerGetUserArt}
+              setTriggerGetUserArt={setTriggerGetUserArt}
             />
           )}
         </Transition>
