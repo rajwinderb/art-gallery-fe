@@ -25,7 +25,7 @@ export interface IArtwork {
   artistdisplayname: string;
   artistgender: string | null;
   artistprefix: string | null;
-  classification: string;
+  classification: string | null;
   country: string | null;
   culture: string | null;
   department: string;
@@ -88,7 +88,7 @@ export interface IPostArtwork {
   objectDate: string | null | undefined;
   medium: string | null;
   country: string | null;
-  classification: string;
+  classification: string | null;
   linkResource: string | null | undefined;
   featured: boolean;
   isHighlight: boolean | undefined;
