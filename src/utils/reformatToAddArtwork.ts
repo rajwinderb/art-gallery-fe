@@ -22,9 +22,11 @@ export function reformatToAddArtwork(artwork: ISearchedArtwork): IPostArtwork {
     linkResource: artwork.linkResource,
     featured: false,
     isHighlight: artwork.isHighlight,
-    tags: artwork.tags.map((tag) => {
-      return tag.term;
-    }),
+    tags:
+      artwork.tags &&
+      artwork.tags.map((tag) => {
+        return tag.term;
+      }),
   };
   return postArtwork;
 }

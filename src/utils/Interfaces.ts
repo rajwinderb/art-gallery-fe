@@ -39,7 +39,7 @@ export interface IArtwork {
   period: string | null;
   primaryimage: string;
   primaryimagesmall: string;
-  tags: ITag[];
+  tags: ITag[] | null;
   title: string;
 }
 
@@ -63,7 +63,7 @@ export interface ISearchedArtwork {
   period: string | null;
   primaryImage: string;
   primaryImageSmall: string;
-  tags: ISearchTag[];
+  tags: ISearchTag[] | null;
   title: string;
 }
 
@@ -92,5 +92,5 @@ export interface IPostArtwork {
   linkResource: string | null | undefined;
   featured: boolean;
   isHighlight: boolean | undefined;
-  tags: (string | undefined)[];
+  tags: (string | undefined)[] | null;
 }
