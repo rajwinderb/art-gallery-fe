@@ -6,27 +6,24 @@ export async function addArtToUserGallerySearch(
   userId: number,
   artwork: IPostArtwork,
   triggerGetUserArt: boolean,
-  setTriggerGetUserArt: (input: boolean) => void
+  setTriggerGetUserArt: (input: boolean) => void,
+  postToUserGallery: (
+    userId: number,
+    artId: number,
+    triggerGetUserArt: boolean,
+    setTriggerGetUserArt: (input: boolean) => void
+  ) => void
 ): Promise<void> {
-  const postUserGallery = async (userid: number, artid: number | undefined) => {
-    await axios
-      .post(`${API_BASE}/userart/${userid}`, {
-        artid: artid,
-        isFavourite: false,
-      })
-      .then((response) => {
-        setTriggerGetUserArt(!triggerGetUserArt);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
   const postArtwork = async (artwork: IPostArtwork) => {
     await axios
       .post(`${API_BASE}/artworks`, artwork)
       .then((response) => {
-        postUserGallery(userId, artwork.id);
+        postToUserGallery(
+          userId,
+          response.data.new_artwork_id,
+          triggerGetUserArt,
+          setTriggerGetUserArt
+        );
       })
       .catch((error) => {
         console.log(error);
@@ -34,5 +31,4 @@ export async function addArtToUserGallerySearch(
   };
 
   await postArtwork(artwork);
-  postUserGallery(userId, artwork.id);
 }

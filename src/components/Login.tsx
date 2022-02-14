@@ -34,7 +34,7 @@ export default function Login({ userId, setUserId }: LoginProps): JSX.Element {
     const postUser = async () => {
       await axios
         .post(`${API_BASE}/users`, {
-          username: username,
+          username: username.trim().toLowerCase(),
         })
         .then((response) => {
           localStorage.setItem("savedUserId", `${response.data.new_user.id}`);

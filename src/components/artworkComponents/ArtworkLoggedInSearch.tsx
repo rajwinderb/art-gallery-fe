@@ -4,6 +4,7 @@ import { addArtToUserGallerySearch } from "../../utils/addArtToUserGallerySearch
 import { API_BASE } from "../../utils/APIFragments";
 import { ISearchedArtwork, IUserArt } from "../../utils/Interfaces";
 import { inUserGallery } from "../../utils/inUserGallery";
+import { postToUserGallery } from "../../utils/postToUserGallery";
 import { reformatToAddArtwork } from "../../utils/reformatToAddArtwork";
 
 interface ArtworkLoggedInSearchProps {
@@ -28,7 +29,8 @@ export default function ArtworkLoggedInSearch({
       userId,
       reformatToAddArtwork(artwork),
       triggerGetUserArt,
-      setTriggerGetUserArt
+      setTriggerGetUserArt,
+      postToUserGallery
     );
   };
 

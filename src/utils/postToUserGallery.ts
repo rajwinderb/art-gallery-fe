@@ -1,7 +1,7 @@
 import axios from "axios";
 import { API_BASE } from "./APIFragments";
 
-export function addArtToUserGalleryFeatured(
+export function postToUserGallery(
   userId: number,
   artId: number,
   triggerGetUserArt: boolean,

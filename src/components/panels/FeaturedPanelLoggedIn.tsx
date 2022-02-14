@@ -1,9 +1,9 @@
 import axios from "axios";
 import "../../styles/Panel.css";
-import { addArtToUserGalleryFeatured } from "../../utils/addArtToUserGalleryFeatured";
 import { API_BASE } from "../../utils/APIFragments";
 import { IArtwork, IUserArt } from "../../utils/Interfaces";
 import { inUserGallery } from "../../utils/inUserGallery";
+import { postToUserGallery } from "../../utils/postToUserGallery";
 
 interface FeaturedPanelLoggedInProps {
   artwork: IArtwork;
@@ -23,7 +23,7 @@ export default function FeaturedPanelLoggedIn({
   setTriggerGetUserArt,
 }: FeaturedPanelLoggedInProps): JSX.Element {
   const handleAdd = () => {
-    addArtToUserGalleryFeatured(
+    postToUserGallery(
       userId,
       artwork.id,
       triggerGetUserArt,

@@ -25,7 +25,7 @@ export interface IArtwork {
   artistdisplayname: string;
   artistgender: string | null;
   artistprefix: string | null;
-  classification: string;
+  classification: string | null;
   country: string | null;
   culture: string | null;
   department: string;
@@ -39,7 +39,7 @@ export interface IArtwork {
   period: string | null;
   primaryimage: string;
   primaryimagesmall: string;
-  tags: ITag[];
+  tags: ITag[] | null;
   title: string;
 }
 
@@ -63,7 +63,7 @@ export interface ISearchedArtwork {
   period: string | null;
   primaryImage: string;
   primaryImageSmall: string;
-  tags: ISearchTag[];
+  tags: ISearchTag[] | null;
   title: string;
 }
 
@@ -88,9 +88,9 @@ export interface IPostArtwork {
   objectDate: string | null | undefined;
   medium: string | null;
   country: string | null;
-  classification: string;
+  classification: string | null;
   linkResource: string | null | undefined;
   featured: boolean;
   isHighlight: boolean | undefined;
-  tags: (string | undefined)[];
+  tags: (string | undefined)[] | null;
 }
