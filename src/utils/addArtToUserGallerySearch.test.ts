@@ -1,7 +1,6 @@
 import axios, { AxiosResponse } from "axios";
 import { addArtToUserGallerySearch } from "./addArtToUserGallerySearch";
 import { ISearchedArtwork } from "./Interfaces";
-import { postToUserGallery } from "./postToUserGallery";
 import { reformatToAddArtwork } from "./reformatToAddArtwork";
 
 //jest.mock(...) is used to automatically mock the axios
