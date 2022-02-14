@@ -1,10 +1,6 @@
 import { addArtToUserGalleryFeatured } from "./addArtToUserGalleryFeatured";
 import axios, { AxiosResponse } from "axios";
 
-const mockSetTriggerGetUserArt = (input: boolean) => {
-  //pass
-};
-
 //jest.mock(...) is used to automatically mock the axios
 jest.mock("axios");
 
@@ -14,6 +10,8 @@ const mockedAxios = axios as jest.Mocked<typeof axios>;
 test("check if a post request is made", async () => {
   const userId = 2;
   const artId = 4058;
+
+  const mockSetTriggerGetUserArt = jest.fn();
 
   //Prepare the response we want to get from axios
   const mockedResponse: AxiosResponse = {
@@ -39,4 +37,5 @@ test("check if a post request is made", async () => {
   );
   expect(axios.post).toHaveBeenCalled();
   expect(data).toBe(undefined);
+  expect(mockSetTriggerGetUserArt).toBeCalled();
 });
