@@ -38,4 +38,5 @@ test("check if a post request is made", async () => {
     mockSetTriggerGetUserArt
   );
   expect(axios.post).toHaveBeenCalled();
+  expect(data).toBe(undefined);
 });
