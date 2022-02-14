@@ -1,5 +1,5 @@
-import { addArtToUserGalleryFeatured } from "./addArtToUserGalleryFeatured";
 import axios, { AxiosResponse } from "axios";
+import { postToUserGallery } from "./postToUserGallery";
 
 //jest.mock(...) is used to automatically mock the axios
 jest.mock("axios");
@@ -29,7 +29,7 @@ test("check if a post request is made", async () => {
   // Make the mock return the custom axios response
   mockedAxios.post.mockResolvedValueOnce(mockedResponse);
   expect(axios.post).not.toHaveBeenCalled();
-  const data = await addArtToUserGalleryFeatured(
+  const data = await postToUserGallery(
     userId,
     artId,
     false,

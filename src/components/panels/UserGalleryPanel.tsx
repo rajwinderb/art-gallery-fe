@@ -1,9 +1,9 @@
 import axios from "axios";
 import "../../styles/Panel.css";
-import { addArtToUserGalleryFeatured } from "../../utils/addArtToUserGalleryFeatured";
 import { API_BASE } from "../../utils/APIFragments";
 import { IUserArt } from "../../utils/Interfaces";
 import { inUserGallery } from "../../utils/inUserGallery";
+import { postToUserGallery } from "../../utils/postToUserGallery";
 
 interface UserGalleyPanelProps {
   artwork: IUserArt;
@@ -23,7 +23,7 @@ export default function UserGalleryPanel({
   setTriggerGetUserArt,
 }: UserGalleyPanelProps): JSX.Element {
   const handleAdd = () => {
-    addArtToUserGalleryFeatured(
+    postToUserGallery(
       userId,
       artwork.id,
       triggerGetUserArt,

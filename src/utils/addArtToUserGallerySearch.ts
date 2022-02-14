@@ -1,6 +1,7 @@
 import axios from "axios";
 import { API_BASE } from "./APIFragments";
 import { IPostArtwork } from "./Interfaces";
+import { postToUserGallery } from "./postToUserGallery";
 
 export async function addArtToUserGallerySearch(
   userId: number,
@@ -8,25 +9,16 @@ export async function addArtToUserGallerySearch(
   triggerGetUserArt: boolean,
   setTriggerGetUserArt: (input: boolean) => void
 ): Promise<void> {
-  const postUserGallery = async (userid: number, artid: number | undefined) => {
-    await axios
-      .post(`${API_BASE}/userart/${userid}`, {
-        artid: artid,
-        isFavourite: false,
-      })
-      .then((response) => {
-        setTriggerGetUserArt(!triggerGetUserArt);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
   const postArtwork = async (artwork: IPostArtwork) => {
     await axios
       .post(`${API_BASE}/artworks`, artwork)
       .then((response) => {
-        postUserGallery(userId, artwork.id);
+        postToUserGallery(
+          userId,
+          response.data.new_artwork_id,
+          triggerGetUserArt,
+          setTriggerGetUserArt
+        );
       })
       .catch((error) => {
         console.log(error);
@@ -34,5 +26,4 @@ export async function addArtToUserGallerySearch(
   };
 
   await postArtwork(artwork);
-  postUserGallery(userId, artwork.id);
 }

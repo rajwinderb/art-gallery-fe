@@ -1,9 +1,9 @@
 import axios from "axios";
 import "../../styles/Artwork.css";
-import { addArtToUserGalleryFeatured } from "../../utils/addArtToUserGalleryFeatured";
 import { API_BASE } from "../../utils/APIFragments";
 import { IArtwork, IUserArt } from "../../utils/Interfaces";
 import { inUserGallery } from "../../utils/inUserGallery";
+import { postToUserGallery } from "../../utils/postToUserGallery";
 
 interface ArtworkLoggedInFeaturedProps {
   artwork: IArtwork;
@@ -23,7 +23,7 @@ export default function ArtworkLoggedInFeatured({
   pickFeaturedArtwork,
 }: ArtworkLoggedInFeaturedProps): JSX.Element {
   const handleAdd = () => {
-    addArtToUserGalleryFeatured(
+    postToUserGallery(
       userId,
       artwork.id,
       triggerGetUserArt,
