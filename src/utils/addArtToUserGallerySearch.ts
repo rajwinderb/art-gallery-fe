@@ -1,13 +1,18 @@
 import axios from "axios";
 import { API_BASE } from "./APIFragments";
 import { IPostArtwork } from "./Interfaces";
-import { postToUserGallery } from "./postToUserGallery";
 
 export async function addArtToUserGallerySearch(
   userId: number,
   artwork: IPostArtwork,
   triggerGetUserArt: boolean,
-  setTriggerGetUserArt: (input: boolean) => void
+  setTriggerGetUserArt: (input: boolean) => void,
+  postToUserGallery: (
+    userId: number,
+    artId: number,
+    triggerGetUserArt: boolean,
+    setTriggerGetUserArt: (input: boolean) => void
+  ) => void
 ): Promise<void> {
   const postArtwork = async (artwork: IPostArtwork) => {
     await axios
