@@ -3,7 +3,7 @@ import "../styles/NavBar.css";
 export default function NavBar(): JSX.Element {
   // const baseURL = "http://localhost:3000/";
 
-  const baseURL = "https://art-galley.netlify.app/";
+  const baseURL = "https://art-gallery-rb.netlify.app/";
 
   return (
     <nav>
