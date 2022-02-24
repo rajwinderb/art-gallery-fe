@@ -177,9 +177,6 @@ export default function VirtualGallery(): JSX.Element {
     for (const wall of wallInfo) {
       drawWall(wall, p5);
     }
-    for (const wall of wallInfo) {
-      drawImages(wall.id, p5);
-    }
   }
 
   function drawWall(wall: IWallInfo, p5: p5Types) {
@@ -192,6 +189,7 @@ export default function VirtualGallery(): JSX.Element {
       singleWallDimensions.height,
       singleWallDimensions.depth
     );
+    drawImages(wall.id, p5);
     p5.pop();
   }
 
