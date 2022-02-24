@@ -4,6 +4,9 @@ import {
   numberGenerateCycler,
   stringGenerateCycler,
 } from "../utils/generators";
+import { IUserArt } from "../utils/Interfaces";
+import { API_BASE } from "../utils/APIFragments";
+import axios from "axios";
 
 interface IWallInfo {
   id: number;
@@ -16,20 +19,10 @@ interface ISingleWallImgs {
   [key: string]: p5Types.Image | undefined;
 }
 
-const userGallery = [
-  {
-    id: 459123,
-  },
-  {
-    id: 11307,
-  },
-  {
-    id: 437526,
-  },
-  {
-    id: 437996,
-  },
-];
+interface VirtualGalleryProps {
+  userGalleryArt: IUserArt[];
+}
+
 const wallImgs: ISingleWallImgs[] = [
   {
     middle: undefined,
@@ -57,7 +50,7 @@ const imgScale = 0.2;
 const wallDistance = 350;
 const singleWallDimensions = {
   width: 700,
-  height: 220,
+  height: 250,
   depth: 10,
 };
 const imgDefaultDimensions = 100;
@@ -105,16 +98,25 @@ const wallInfo: IWallInfo[] = [
 ];
 const nextImagePlacement = stringGenerateCycler(["middle", "right", "left"]);
 const nextWallId = numberGenerateCycler([0, 1, 2, 3]);
-let image: p5Types.Image;
-let text = "hello";
 
-export default function VirtualGallery(): JSX.Element {
-  function preload(p5: p5Types) {
+export default function VirtualGallery({
+  userGalleryArt,
+}: VirtualGalleryProps): JSX.Element {
+  // const [userGallery, setUserGallery] = useState<IUserArt[]>([]);
+  async function preload(p5: p5Types) {
+    const userId = localStorage.getItem("savedUserId");
+    let userGallery: IUserArt[] = [];
+    if (userId !== null) {
+      await axios
+        .get(`${API_BASE}/userart/${userId}`)
+        .then((response) => {
+          userGallery = response.data.artworks;
+          console.log(response.data.artworks);
+        })
+        .catch((error) => console.log(error));
+    }
     let wallId: number = nextWallId();
     let imagePlacement = nextImagePlacement();
-    image = p5.loadImage(
-      `https://rb-art-gallery-be.herokuapp.com/getimage/${437996}.jpg`
-    );
     for (const artwork of userGallery) {
       wallImgs[wallId][imagePlacement] = p5.loadImage(
         `https://rb-art-gallery-be.herokuapp.com/getimage/${artwork.id}.jpg`
@@ -124,16 +126,9 @@ export default function VirtualGallery(): JSX.Element {
       }
       imagePlacement = nextImagePlacement();
     }
-    text = "bob";
-    console.log(wallImgs);
-    console.log(image);
-    console.log(text);
   }
 
   function setup(p5: p5Types, canvasParentRef: Element) {
-    console.log(wallImgs);
-    console.log(image);
-    console.log(text);
     p5.createCanvas(p5.windowWidth - 5, p5.windowHeight - 205, p5.WEBGL);
     p5.noStroke();
 
@@ -145,7 +140,6 @@ export default function VirtualGallery(): JSX.Element {
   function draw(p5: p5Types) {
     p5.background(250);
 
-    p5.orbitControl(5, 5);
     p5.directionalLight(
       p5.color(252, 252, 247),
       p5.createVector(-0.8, -0.5, -0.2)

@@ -73,7 +73,7 @@ function App(): JSX.Element {
             element={
               <>
                 <AppHeader userId={userId} setUserId={setUserId} />
-                <VirtualGallery />
+                <VirtualGallery userGalleryArt={userGalleryArt} />
               </>
             }
           />
