@@ -1,3 +1,5 @@
+import p5Types from "p5";
+
 export interface IUser {
   id: number;
   username: string;
@@ -93,4 +95,15 @@ export interface IPostArtwork {
   featured: boolean;
   isHighlight: boolean | undefined;
   tags: (string | undefined)[] | null;
+}
+
+export interface IWallInfo {
+  id: number;
+  translate: { x: number; y: number; z: number };
+  colour: string;
+  rotateY: number;
+}
+
+export interface ISingleWallImgs {
+  [key: string]: p5Types.Image | undefined;
 }

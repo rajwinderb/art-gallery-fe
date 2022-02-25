@@ -6,7 +6,8 @@ import NavBar from "../components/NavBar";
 test("check if the correct text appears", () => {
   render(<NavBar />);
   screen.getByText(/home/i);
-  screen.getByText(/Your Art Gallery/i);
+  screen.getByText(/Your Artworks/i);
+  screen.getByText(/Your Virtual Gallery/i);
 });
 
 test("check that the links are the correct URL", () => {
@@ -17,10 +18,17 @@ test("check that the links are the correct URL", () => {
     "https://art-gallery-rb.netlify.app/"
   );
   const userGalleryLink = screen.getByRole("link", {
-    name: /Your Art Gallery/i,
+    name: /Your Artworks/i,
   });
   expect(userGalleryLink).toHaveAttribute(
     "href",
-    "https://art-gallery-rb.netlify.app/your-art-gallery"
+    "https://art-gallery-rb.netlify.app/your-artworks"
+  );
+  const virtualGalleryLink = screen.getByRole("link", {
+    name: /Your Virtual Gallery/i,
+  });
+  expect(virtualGalleryLink).toHaveAttribute(
+    "href",
+    "https://art-gallery-rb.netlify.app/your-virtual-gallery"
   );
 });

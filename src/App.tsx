@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { IUserArt } from "./utils/Interfaces";
 import axios from "axios";
 import { API_BASE } from "./utils/APIFragments";
+import VirtualGallery from "./routes/VirtualGallery";
 
 function App(): JSX.Element {
   const [userId, setUserId] = useState<number | null>(null);
@@ -54,7 +55,7 @@ function App(): JSX.Element {
             }
           />
           <Route
-            path="/your-art-gallery"
+            path="/your-artworks"
             element={
               <>
                 <AppHeader userId={userId} setUserId={setUserId} />
@@ -64,6 +65,15 @@ function App(): JSX.Element {
                   triggerGetUserArt={triggerGetUserArt}
                   setTriggerGetUserArt={setTriggerGetUserArt}
                 />
+              </>
+            }
+          />
+          <Route
+            path="/your-virtual-gallery"
+            element={
+              <>
+                <AppHeader userId={userId} setUserId={setUserId} />
+                <VirtualGallery />
               </>
             }
           />

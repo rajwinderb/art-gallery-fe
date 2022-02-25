@@ -1,5 +1,5 @@
-import { ISearchedArtwork } from "./Interfaces";
-import { reformatToAddArtwork } from "./reformatToAddArtwork";
+import { ISearchedArtwork } from "../Interfaces";
+import { reformatToAddArtwork } from "../functions/reformatToAddArtwork";
 
 const searchResults: ISearchedArtwork[] = [
   {

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { API_BASE } from "./APIFragments";
+import { API_BASE } from "../APIFragments";
 
 export function postToUserGallery(
   userId: number,

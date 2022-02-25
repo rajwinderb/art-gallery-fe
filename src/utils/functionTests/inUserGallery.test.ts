@@ -1,5 +1,5 @@
-import { IUserArt } from "./Interfaces";
-import { inUserGallery } from "./inUserGallery";
+import { IUserArt } from "../Interfaces";
+import { inUserGallery } from "../functions/inUserGallery";
 
 const userGalleryArt: IUserArt[] = [
   {

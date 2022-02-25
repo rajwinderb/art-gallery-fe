@@ -2,8 +2,8 @@ import axios from "axios";
 import "../../styles/Artwork.css";
 import { API_BASE } from "../../utils/APIFragments";
 import { IUserArt } from "../../utils/Interfaces";
-import { inUserGallery } from "../../utils/inUserGallery";
-import { postToUserGallery } from "../../utils/postToUserGallery";
+import { inUserGallery } from "../../utils/functions/inUserGallery";
+import { postToUserGallery } from "../../utils/functions/postToUserGallery";
 
 interface ArtworkLoggedInFeaturedProps {
   artwork: IUserArt;

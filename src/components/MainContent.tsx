@@ -5,7 +5,7 @@ import FeaturedArtworks from "./FeaturedArtworks";
 import { IArtwork, ISearchedArtwork, IUserArt } from "../utils/Interfaces";
 import axios from "axios";
 import { API_BASE } from "../utils/APIFragments";
-import { formatSearchTerm } from "../utils/formatSearchTerm";
+import { formatSearchTerm } from "../utils/functions/formatSearchTerm";
 import { trackPromise } from "react-promise-tracker";
 import { LoadingIndicator } from "./LoadingIndicator";
 

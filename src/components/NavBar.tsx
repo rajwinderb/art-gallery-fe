@@ -12,7 +12,10 @@ export default function NavBar(): JSX.Element {
           <a href={`${baseURL}`}>Home</a>
         </li>
         <li>
-          <a href={`${baseURL}your-art-gallery`}>Your Art Gallery</a>
+          <a href={`${baseURL}your-artworks`}>Your Artworks</a>
+        </li>
+        <li>
+          <a href={`${baseURL}your-virtual-gallery`}>Your Virtual Gallery</a>
         </li>
       </ul>
     </nav>

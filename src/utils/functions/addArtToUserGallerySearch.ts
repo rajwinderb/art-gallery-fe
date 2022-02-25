@@ -1,6 +1,6 @@
 import axios from "axios";
-import { API_BASE } from "./APIFragments";
-import { IPostArtwork } from "./Interfaces";
+import { API_BASE } from "../APIFragments";
+import { IPostArtwork } from "../Interfaces";
 
 export async function addArtToUserGallerySearch(
   userId: number,

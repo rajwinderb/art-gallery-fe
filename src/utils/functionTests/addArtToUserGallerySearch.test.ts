@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from "axios";
-import { addArtToUserGallerySearch } from "./addArtToUserGallerySearch";
-import { ISearchedArtwork } from "./Interfaces";
-import { reformatToAddArtwork } from "./reformatToAddArtwork";
+import { addArtToUserGallerySearch } from "../functions/addArtToUserGallerySearch";
+import { ISearchedArtwork } from "../Interfaces";
+import { reformatToAddArtwork } from "../functions/reformatToAddArtwork";
 
 //jest.mock(...) is used to automatically mock the axios
 jest.mock("axios");

@@ -1,4 +1,4 @@
-import { formatSearchTerm } from "./formatSearchTerm";
+import { formatSearchTerm } from "../functions/formatSearchTerm";
 
 test("a single lowercase word doesn't change", () => {
   expect(formatSearchTerm("sun")).toBe("sun");

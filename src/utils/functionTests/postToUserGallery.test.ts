@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from "axios";
-import { postToUserGallery } from "./postToUserGallery";
+import { postToUserGallery } from "../functions/postToUserGallery";
 
 //jest.mock(...) is used to automatically mock the axios
 jest.mock("axios");
