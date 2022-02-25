@@ -1,4 +1,4 @@
-import { IPostArtwork, ISearchedArtwork } from "./Interfaces";
+import { IPostArtwork, ISearchedArtwork } from "../Interfaces";
 
 export function reformatToAddArtwork(artwork: ISearchedArtwork): IPostArtwork {
   const postArtwork = {

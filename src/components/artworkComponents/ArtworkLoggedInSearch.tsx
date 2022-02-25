@@ -1,11 +1,11 @@
 import axios from "axios";
 import "../../styles/Artwork.css";
-import { addArtToUserGallerySearch } from "../../utils/addArtToUserGallerySearch";
+import { addArtToUserGallerySearch } from "../../utils/functions/addArtToUserGallerySearch";
 import { API_BASE } from "../../utils/APIFragments";
 import { ISearchedArtwork, IUserArt } from "../../utils/Interfaces";
-import { inUserGallery } from "../../utils/inUserGallery";
-import { postToUserGallery } from "../../utils/postToUserGallery";
-import { reformatToAddArtwork } from "../../utils/reformatToAddArtwork";
+import { inUserGallery } from "../../utils/functions/inUserGallery";
+import { postToUserGallery } from "../../utils/functions/postToUserGallery";
+import { reformatToAddArtwork } from "../../utils/functions/reformatToAddArtwork";
 
 interface ArtworkLoggedInSearchProps {
   artwork: ISearchedArtwork;

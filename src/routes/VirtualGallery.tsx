@@ -1,28 +1,22 @@
+import "../styles/VirtualGallery.css";
 import Sketch from "react-p5";
 import p5Types from "p5";
 import {
   numberGenerateCycler,
   stringGenerateCycler,
-} from "../utils/generators";
-import { IUserArt } from "../utils/Interfaces";
+} from "../utils/functions/generators";
+import { IUserArt, IWallInfo, ISingleWallImgs } from "../utils/Interfaces";
 import { API_BASE } from "../utils/APIFragments";
 import axios from "axios";
 
-interface IWallInfo {
-  id: number;
-  translate: { x: number; y: number; z: number };
-  colour: string;
-  rotateY: number;
-}
-
-interface ISingleWallImgs {
-  [key: string]: p5Types.Image | undefined;
-}
-
-interface VirtualGalleryProps {
-  userGalleryArt: IUserArt[];
-}
-
+let myCamera: p5Types.Camera;
+const imgScale = 0.2;
+const wallDistance = 350;
+const singleWallDimensions = {
+  width: 700,
+  height: 250,
+  depth: 10,
+};
 const wallImgs: ISingleWallImgs[] = [
   {
     middle: undefined,
@@ -45,14 +39,6 @@ const wallImgs: ISingleWallImgs[] = [
     left: undefined,
   },
 ];
-let myCamera: p5Types.Camera;
-const imgScale = 0.2;
-const wallDistance = 350;
-const singleWallDimensions = {
-  width: 700,
-  height: 250,
-  depth: 10,
-};
 const imgDefaultDimensions = 100;
 const wallInfo: IWallInfo[] = [
   {
@@ -99,9 +85,7 @@ const wallInfo: IWallInfo[] = [
 const nextImagePlacement = stringGenerateCycler(["middle", "right", "left"]);
 const nextWallId = numberGenerateCycler([0, 1, 2, 3]);
 
-export default function VirtualGallery({
-  userGalleryArt,
-}: VirtualGalleryProps): JSX.Element {
+export default function VirtualGallery(): JSX.Element {
   // const [userGallery, setUserGallery] = useState<IUserArt[]>([]);
   async function preload(p5: p5Types) {
     const userId = localStorage.getItem("savedUserId");
@@ -188,6 +172,8 @@ export default function VirtualGallery({
   }
 
   function drawImages(id: number, p5: p5Types) {
+    p5.strokeWeight(3);
+    p5.stroke(0);
     let img;
     if (wallImgs[id]["middle"] !== undefined) {
       img = wallImgs[id]["middle"];
@@ -210,6 +196,7 @@ export default function VirtualGallery({
       img !== undefined &&
         drawLeftImage(img, id, p5, imgDefaultDimensions, imgDefaultDimensions);
     }
+    p5.noStroke();
   }
 
   function drawMiddleImage(
@@ -302,7 +289,9 @@ export default function VirtualGallery({
 
   return (
     <>
-      <p>Use scroll to zoom and left and right arrows to rotate camera</p>
+      <p className="instructions">
+        Use left and right arrows to rotate the camera
+      </p>
       <Sketch setup={setup} draw={draw} preload={preload} />
     </>
   );

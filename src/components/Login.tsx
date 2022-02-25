@@ -4,8 +4,8 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { API_BASE } from "../utils/APIFragments";
 import { IUser } from "../utils/Interfaces";
-import { getUserIdFromList } from "../utils/getUserIdFromList";
-import { getUsername } from "../utils/getUsername";
+import { getUserIdFromList } from "../utils/functions/getUserIdFromList";
+import { getUsername } from "../utils/functions/getUsername";
 
 interface LoginProps {
   setUserId: (userId: number | null) => void;

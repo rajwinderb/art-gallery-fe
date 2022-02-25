@@ -1,4 +1,4 @@
-import { IUser } from "./Interfaces";
+import { IUser } from "../Interfaces";
 
 export function getUsername(userId: number, userList: IUser[]): string {
   const filteredList = userList.filter((user) => user.id === userId);

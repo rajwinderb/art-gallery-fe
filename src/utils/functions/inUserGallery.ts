@@ -1,4 +1,4 @@
-import { IUserArt } from "./Interfaces";
+import { IUserArt } from "../Interfaces";
 
 export function inUserGallery(
   artId: number,

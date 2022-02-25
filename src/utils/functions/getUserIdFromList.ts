@@ -1,4 +1,4 @@
-import { IUser } from "./Interfaces";
+import { IUser } from "../Interfaces";
 
 export function getUserIdFromList(
   username: string,

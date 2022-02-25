@@ -1,4 +1,4 @@
-import { getUsername } from "./getUsername";
+import { getUsername } from "../functions/getUsername";
 
 const userList = [
   {
