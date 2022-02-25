@@ -27,7 +27,7 @@ export default function Login({ userId, setUserId }: LoginProps): JSX.Element {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [triggerGetUserList]);
 
   const handleGetUserId = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
