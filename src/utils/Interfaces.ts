@@ -46,7 +46,6 @@ export interface IArtwork {
 }
 
 export interface ISearchedArtwork {
-  id?: number;
   objectID: number;
   artistDisplayBio: string;
   artistDisplayName: string;
@@ -74,7 +73,7 @@ export interface IUserArt extends IArtwork {
 }
 
 export interface IPostArtwork {
-  id: number | undefined;
+  id: number;
   primaryImage: string | undefined;
   primaryImageSmall: string | undefined;
   department: string;

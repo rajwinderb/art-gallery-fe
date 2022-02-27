@@ -20,7 +20,7 @@ export async function addArtToUserGallerySearch(
       .then((response) => {
         postToUserGallery(
           userId,
-          response.data.new_artwork_id,
+          artwork.id,
           triggerGetUserArt,
           setTriggerGetUserArt
         );
